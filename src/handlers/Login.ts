@@ -11,13 +11,13 @@ export const Login = async (req, res, next) => {
     const usuario = await Users.findOne({ where: { email } })
 
     if (!usuario) {
-        res.status(401).json({ mensaje: 'Este Usuario no existe' })
+        res.json({ mensaje: 'Este Usuario no existe' })
     }
     else {
         const verify = await bcrypt.compare(password.trim(), usuario.dataValues.password)
 
         if (!verify) {
-            res.status(401).json({ mensaje: 'Password incorrecto' })
+            res.json({ mensaje: 'Password incorrecto' })
         }
         else {
             const token = jwt.sign({
