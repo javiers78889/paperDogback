@@ -22,6 +22,7 @@ export const Login = async (req, res, next) => {
         else {
             const token = jwt.sign({
                 email: usuario.dataValues.email,
+                usuario:usuario.dataValues.usuario,
                 role: usuario.dataValues.role,
                 plan: usuario.dataValues.plan
             }, 'SECRETO')
