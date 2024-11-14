@@ -13,6 +13,12 @@ class Users extends Model {
         unique: true
     })
     email!: string;
+    @Column({
+        type: DataType.STRING(255),
+        allowNull: false,
+        unique: true
+    })
+    usuario!: string;
 
     @Column({
         type: DataType.STRING(255),
