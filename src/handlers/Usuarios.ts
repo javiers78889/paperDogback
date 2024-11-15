@@ -1,7 +1,8 @@
 import Paquetes from "../models/Paquetes.model";
 
 export const Usuarios = async (req, res, next) => {
-    const { email } = req.body;
+    const { email } = req.params;
+    console.log(email)
     try {
 
         const filtro = await Paquetes.findAll({ where: { email } })
