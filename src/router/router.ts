@@ -7,6 +7,8 @@ import { createUser, getUsers, updateUser } from "../handlers/handlerUser";
 import { Authorization } from "../middleware/Authorization";
 import { VerifyPaquetes } from "../middleware/VerifyPaquetes";
 import { createPaquetes, deletePaquetes, getPaquetes, updatePaquetes } from "../handlers/handlerPaquetes";
+import { Recovery } from "../handlers/Recovery";
+import { Usuarios } from "../handlers/Usuarios";
 
 
 export const router = Router()
@@ -15,9 +17,14 @@ export const router = Router()
 router.post('/tracking', VerifyTracking, trackeo)
 //logueo
 router.post('/login', Login)
+//recovery password
+router.post('/recovery', Recovery)
+
+//paquetes exclusivos
+router.get('/userpaquetes', Authorization, Usuarios)
 
 //Usuarios
-router.get('/users', Authorization, getUsers)
+router.get('/users', Authorization, getUsers)// admin
 router.post('/users', VerifyExist, createUser)
 router.put('/users', VerifyExist, Authorization, updateUser)
 

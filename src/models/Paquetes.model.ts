@@ -26,6 +26,12 @@ class Paquetes extends Model {
     plan!: string;
 
     @Column({
+        type: DataType.STRING(255),
+        allowNull: false
+    })
+    estado!: string;
+
+    @Column({
         type: DataType.INTEGER,
         allowNull: false
     })
