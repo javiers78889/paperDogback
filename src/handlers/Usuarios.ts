@@ -1,7 +1,7 @@
 import Paquetes from "../models/Paquetes.model";
 
 export const Usuarios = async (req, res, next) => {
-    const { email } = req.params;
+    const { email } = req.body;
     console.log(email)
     try {
 
