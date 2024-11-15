@@ -3,14 +3,15 @@ import Paquetes from "../models/Paquetes.model"
 
 export const createPaquetes = async (req, res) => {
 
-    const { tracking, email, plan, peso, total } = req.body
+    const { tracking, email, plan, peso, estado, total } = req.body
 
     const obj = {
         tracking: tracking.trim(),
         email: email.trim(),
         plan: plan.trim(),
         peso: peso.trim(),
-        total: total.trim()
+        total: total.trim(),
+        estado: estado.trim()
     }
 
     const crear = await Paquetes.create(obj);
