@@ -21,7 +21,7 @@ router.post('/login', Login)
 router.post('/recovery', Recovery)
 
 //paquetes exclusivos
-router.get('/userpaquetes', Authorization, Usuarios)
+router.post('/userpaquetes', Authorization, Usuarios)
 
 //Usuarios
 router.get('/users', Authorization, getUsers)// admin
