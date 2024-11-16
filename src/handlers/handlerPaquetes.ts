@@ -48,6 +48,7 @@ export const updatePaquetes = async (req, res, next) => {
 
         if (editar) {
             editar.update(req.body)
+            res.json({mensaje:'Paquete Entregado'})
         }
         else {
             res.status(501).json({ mensaje: 'Este Articulo no existe' })
