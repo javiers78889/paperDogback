@@ -9,6 +9,7 @@ import { VerifyPaquetes } from "../middleware/VerifyPaquetes";
 import { createPaquetes, deletePaquetes, getPaquetes, updatePaquetes } from "../handlers/handlerPaquetes";
 import { Recovery } from "../handlers/Recovery";
 import { Usuarios } from "../handlers/Usuarios";
+import { Validacion } from "../handlers/Validacion";
 
 
 export const router = Router()
@@ -33,3 +34,8 @@ router.get('/paquetes', Authorization, getPaquetes)
 router.post('/paquetes', Authorization, VerifyPaquetes, createPaquetes)
 router.put('/paquetes', Authorization, updatePaquetes)
 router.delete('/paquetes', Authorization, deletePaquetes)
+
+
+//Consultar paquete si existe
+
+router.post('/paquetesexist', Authorization, Validacion)
