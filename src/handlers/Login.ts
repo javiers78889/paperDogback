@@ -2,6 +2,7 @@ import Users from "../models/Users.model"
 import bcrypt from 'bcrypt'
 import { check } from "express-validator"
 import jwt from 'jsonwebtoken'
+import Paquetes from "../models/Paquetes.model"
 
 export const Login = async (req, res, next) => {
     await check('email').notEmpty().withMessage('Email Null').run(req)
@@ -26,7 +27,11 @@ export const Login = async (req, res, next) => {
                 role: usuario.dataValues.role,
                 plan: usuario.dataValues.plan
             }, 'SECRETO')
-            res.json({ token })
+            const paquetes = await Paquetes.findAll()
+            const usuarios = await Users.findAll()
+    
+            const obj = { token,paquetes, usuarios }
+            res.json({ obj })
         }
 
 
