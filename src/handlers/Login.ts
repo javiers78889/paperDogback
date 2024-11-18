@@ -23,15 +23,26 @@ export const Login = async (req, res, next) => {
         else {
             const token = jwt.sign({
                 email: usuario.dataValues.email,
-                usuario:usuario.dataValues.usuario,
+                usuario: usuario.dataValues.usuario,
                 role: usuario.dataValues.role,
                 plan: usuario.dataValues.plan
             }, 'SECRETO')
-            const paquetes = await Paquetes.findAll()
-            const usuarios = await Users.findAll()
-    
-            const obj = { token,paquetes, usuarios }
-            res.json({ obj })
+            if (usuario.dataValues.role === 'admin') {
+
+
+                const paquetes = await Paquetes.findAll()
+                const usuarios = await Users.findAll()
+
+                const obj = { token, paquetes, usuarios }
+                res.json({ obj })
+            } else {
+                const paquetes = await Paquetes.findAll({ where: { email: usuario.dataValues.email } })
+
+                const obj = { token, paquetes, }
+                res.json({ obj })
+
+            }
+
         }
 
 
