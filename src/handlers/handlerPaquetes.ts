@@ -1,5 +1,6 @@
 import e from "express";
 import Paquetes from "../models/Paquetes.model"
+import Users from "../models/Users.model";
 
 export const createPaquetes = async (req, res) => {
 
@@ -32,8 +33,11 @@ export const createPaquetes = async (req, res) => {
 export const getPaquetes = async (req, res) => {
     try {
         const paquetes = await Paquetes.findAll()
+        const usuarios = await Users.findAll()
 
-        res.status(201).json(paquetes)
+        const obj = { paquetes, usuarios }
+
+        res.status(201).json(obj)
 
     } catch (error) {
         res.status(401).json({ mensaje: error })
@@ -48,7 +52,7 @@ export const updatePaquetes = async (req, res, next) => {
 
         if (editar) {
             editar.update(req.body)
-            res.json({mensaje:'Paquete Entregado'})
+            res.json({ mensaje: 'Paquete Entregado' })
         }
         else {
             res.status(501).json({ mensaje: 'Este Articulo no existe' })
