@@ -10,8 +10,8 @@ export const createPaquetes = async (req, res) => {
         tracking: tracking.trim(),
         email: email.trim(),
         plan: plan.trim(),
-        peso: peso.trim(),
-        total: total.trim(),
+        peso: peso,
+        total: total,
         estado: estado.trim()
     }
 
