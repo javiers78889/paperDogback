@@ -30,13 +30,17 @@ export const Login = async (req, res, next) => {
             if (usuario.dataValues.role === 'admin') {
 
 
-                const paquetes = await Paquetes.findAll()
-                const usuarios = await Users.findAll()
+                const paquetes = await Paquetes.findAll({
+                    order: [['createdAt', 'DESC']], // Ordenar del más nuevo al más antiguo
+                })
+                const usuarios = await Users.findAll({
+                    order: [['createdAt', 'DESC']], // Ordenar del más nuevo al más antiguo
+                })
 
                 const obj = { token, paquetes, usuarios }
                 res.json({ obj })
             } else {
-                const paquetes = await Paquetes.findAll({ where: { email: usuario.dataValues.email } })
+                const paquetes = await Paquetes.findAll({ where: { email: usuario.dataValues.email }, order: [['createdAt', 'DESC']] })
 
                 const obj = { token, paquetes, }
                 res.json({ obj })
