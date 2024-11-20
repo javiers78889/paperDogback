@@ -27,7 +27,7 @@ router.post('/userpaquetes', Authorization, Usuarios)
 //Usuarios
 router.get('/users', Authorization, getUsers)// admin
 router.post('/users', VerifyExist, createUser)
-router.put('/users', VerifyExist, Authorization, updateUser)
+router.put('/users', Authorization, updateUser)
 
 //paquetes
 router.get('/paquetes', Authorization, getPaquetes)
@@ -36,6 +36,7 @@ router.put('/paquetes', Authorization, updatePaquetes)
 router.delete('/paquetes', Authorization, deletePaquetes)
 
 
-//Consultar paquete si existe
+//Consultar paquete o Usuario si existe
 
 router.post('/paquetesexist', Authorization, Validacion)
+router.post('/usuarioexist', VerifyExist)
