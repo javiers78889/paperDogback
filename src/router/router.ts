@@ -2,7 +2,7 @@ import { Router } from "express";
 import { trackeo } from "../handlers/handlerTracking";
 import { VerifyTracking } from "../middleware/VerifyTracking";
 import { Login } from "../handlers/Login";
-import { VerifyExist } from "../middleware/VerifyExist";
+import { VerifyExist, VerifyExists } from "../middleware/VerifyExist";
 import { createUser, getUsers, updateUser } from "../handlers/handlerUser";
 import { Authorization } from "../middleware/Authorization";
 import { VerifyPaquetes } from "../middleware/VerifyPaquetes";
@@ -39,4 +39,5 @@ router.delete('/paquetes', Authorization, deletePaquetes)
 //Consultar paquete o Usuario si existe
 
 router.post('/paquetesexist', Authorization, Validacion)
-router.post('/usuarioexist', VerifyExist)
+router.post('/usuarioexist', VerifyExists)
+router.post('/usuarioexistemail', VerifyExist)
