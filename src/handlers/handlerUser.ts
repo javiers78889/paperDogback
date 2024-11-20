@@ -46,13 +46,18 @@ export const getUsers = async (req, res) => {
 
 export const updateUser = async (req, res) => {
 
-    const { email } = req.body
+    const { email, usuario, password, role, plan } = req.body;
+
+    const encriptar = await bcrypt.hash(password, 12)
+
+
+    const obj = { email, usuario, password: encriptar, role, plan }
 
     try {
         const editar = await Users.findOne({ where: { email } })
 
         if (editar) {
-            await editar.update(req.body)
+            await editar.update(obj)
             res.status(201).json({ mensaje: 'Actualizado' })
         }
 
