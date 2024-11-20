@@ -28,7 +28,7 @@ export const VerifyExists = async (req, res, next) => {
 
 
     if (exist) {
-        res.status(401).json({ mensaje: 'Este Usuario ya existe' , exist })
+        res.status(200).json({ mensaje: 'Encontrado' , exist })
         
         
     }
