@@ -2,21 +2,26 @@ import Users from "../models/Users.model"
 
 export const VerifyExist = async (req, res, next) => {
 
-    const { email,id } = req.body
+    const { email, usuario } = req.body
+    if (!email || !usuario) {
+        res.json({ mensaje: 'Faltan datos' })
 
-    const exist = await Users.findOne({ where: { email   } })
-
-
-    if (exist) {
-        res.json({ mensaje: 'Este Usuario ya existe' , exist })
-        
-        
     }
     else {
-        next()
+
+        const exist = await Users.findOne({ where: { email, usuario } })
+
+
+        if (exist) {
+            res.json({ mensaje: 'Este Usuario ya existe', exist })
+
+
+        }
+        else {
+            next()
+        }
+
     }
-
-
 
 }
 
@@ -28,9 +33,9 @@ export const VerifyExists = async (req, res, next) => {
 
 
     if (exist) {
-        res.status(200).json({ mensaje: 'Encontrado' , exist })
-        
-        
+        res.status(200).json({ mensaje: 'Encontrado', exist })
+
+
     }
     else {
         next()

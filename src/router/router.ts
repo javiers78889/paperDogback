@@ -27,7 +27,7 @@ router.post('/userpaquetes', Authorization, Usuarios)
 //Usuarios
 router.get('/users', Authorization, getUsers)// admin
 router.post('/users', VerifyExist, createUser)
-router.put('/users', Authorization, updateUser)
+router.put('/users', updateUser)
 
 //paquetes
 router.get('/paquetes', Authorization, getPaquetes)
