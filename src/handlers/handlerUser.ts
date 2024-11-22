@@ -46,28 +46,15 @@ export const getUsers = async (req, res) => {
 
 export const updateUser = async (req, res, next) => {
 
-    const { id, email, usuario, password, role, plan } = req.body;
+    const { id, email, usuario, role, plan } = req.body;
 
     try {
         const editar = await Users.findOne({ where: { id } })
 
-        const verify = await bcrypt.compare(password.trim(), editar.dataValues.password)
-        console.log(editar.dataValues.password)
-        console.log(req.body)
 
-        if (verify) {
 
-            res.json({mensaje:'Contasena igual'})
-
-        }
-        else {
-            console.log('no era igual')
-            const obj = { email, usuario, role, plan }
-            await editar.update(obj)
-            res.status(201).json({ mensaje: 'Actualizado' })
-
-        }
-
+        await editar.update(req.body)
+        res.status(201).json({ mensaje: 'Actualizado' })
 
 
     } catch (error) {
