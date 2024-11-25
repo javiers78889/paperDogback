@@ -10,6 +10,7 @@ import { createPaquetes, deletePaquetes, getPaquetes, updatePaquetes } from "../
 import { Recovery } from "../handlers/Recovery";
 import { Usuarios } from "../handlers/Usuarios";
 import { Validacion } from "../handlers/Validacion";
+import { SendMessage } from "../middleware/Nodemailer";
 
 
 export const router = Router()
@@ -31,7 +32,7 @@ router.put('/users', updateUser)
 
 //paquetes
 router.get('/paquetes', Authorization, getPaquetes)
-router.post('/paquetes', Authorization, VerifyPaquetes, createPaquetes)
+router.post('/paquetes', Authorization, VerifyPaquetes, createPaquetes,SendMessage)
 router.put('/paquetes', Authorization, updatePaquetes)
 router.delete('/paquetes', Authorization, deletePaquetes)
 

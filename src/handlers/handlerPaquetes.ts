@@ -2,7 +2,7 @@ import e from "express";
 import Paquetes from "../models/Paquetes.model"
 import Users from "../models/Users.model";
 
-export const createPaquetes = async (req, res) => {
+export const createPaquetes = async (req, res,next) => {
 
     const { tracking, email, plan, peso, estado, total } = req.body
 
@@ -21,6 +21,7 @@ export const createPaquetes = async (req, res) => {
     try {
         await crear.save()
         res.status(201).json({ mensaje: 'Registrado' })
+        next()
 
     } catch (error) {
 
