@@ -21,6 +21,7 @@ export const createUser = async (req, res, next) => {
     try {
         await Guardar.save()
         res.status(200).json({ mensaje: 'Usuario Creado', Guardar })
+        next()
 
     } catch (error) {
         res.status(401).json({ mensaje: error })
