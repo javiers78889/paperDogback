@@ -2,7 +2,7 @@ import { Router } from "express";
 import { trackeo } from "../handlers/handlerTracking";
 import { VerifyTracking } from "../middleware/VerifyTracking";
 import { Login } from "../handlers/Login";
-import { VerifyExist, VerifyExists } from "../middleware/VerifyExist";
+import { VerifyExist, VerifyExiste, VerifyExists } from "../middleware/VerifyExist";
 import { createUser, getUsers, updateUser } from "../handlers/handlerUser";
 import { Authorization } from "../middleware/Authorization";
 import { VerifyPaquetes } from "../middleware/VerifyPaquetes";
@@ -27,7 +27,7 @@ router.post('/userpaquetes', Authorization, Usuarios)
 
 //Usuarios
 router.get('/users', Authorization, getUsers)// admin
-router.post('/users', VerifyExist, createUser, Saludo)
+router.post('/users', VerifyExiste, createUser, Saludo)
 router.put('/users', updateUser)
 
 //paquetes
