@@ -2,7 +2,7 @@ import { Router } from "express";
 import { trackeo } from "../handlers/handlerTracking";
 import { VerifyTracking } from "../middleware/VerifyTracking";
 import { Login } from "../handlers/Login";
-import { VerifyExist, VerifyExiste, VerifyExists } from "../middleware/VerifyExist";
+import { VerifyExi, VerifyExist, VerifyExiste, VerifyExists } from "../middleware/VerifyExist";
 import { createUser, getUsers, updateUser } from "../handlers/handlerUser";
 import { Authorization } from "../middleware/Authorization";
 import { VerifyPaquetes } from "../middleware/VerifyPaquetes";
@@ -32,7 +32,7 @@ router.put('/users', updateUser)
 
 //paquetes
 router.get('/paquetes', Authorization, getPaquetes)
-router.post('/paquetes', Authorization, VerifyPaquetes, createPaquetes, SendMessage)
+router.post('/paquetes', Authorization,VerifyExi, VerifyPaquetes, createPaquetes, SendMessage)
 router.put('/paquetes', Authorization, updatePaquetes)
 router.delete('/paquetes', Authorization, deletePaquetes)
 
