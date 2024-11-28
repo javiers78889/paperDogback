@@ -42,7 +42,7 @@ export const VerifyExi = async (req, res, next) => {
 
         }
         else {
-            res.json({ mensaje: 'Este Usuario No existe', exist })
+            res.status(401).json({ mensaje: 'Este Usuario No existe', exist })
         }
 
     }
