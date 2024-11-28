@@ -12,9 +12,10 @@ export const createUser = async (req, res, next) => {
     const { email, usuario, password, role, plan } = req.body;
 
     const encriptar = await bcrypt.hash(password, 12)
+    const correo = email.toLowerCase();
+    const user = usuario.toUpperCase();
 
-
-    const obj = { email, usuario, password: encriptar, role, plan }
+    const obj = { email:correo, usuario:user, password: encriptar, role, plan }
 
     const Guardar = await Users.create(obj)
 
