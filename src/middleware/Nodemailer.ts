@@ -27,12 +27,13 @@ export const SendMessage = async (req, res) => {
 }
 export const Saludo = async (req, res) => {
     const { email, password } = req.body
+    const correo = email.toLowerCase()
     const info = await transporter.sendMail({
         from: '"PAPERDOG SHOPPING🐶 " <paperdogsopping@gmail.com>', // sender address
         to: `${email}`, // list of receivers
         subject: "Gracias por Registrarte Con Nosotros📦", // Subject line
         text: "Hola!", // plain text body
-        html: `<b>Tus credenciales para loguearte en nuestra pagina son: <br>email: ${email} password:${password} <br> puedes revisar tus facturas en nuestro sitio web : <br><a href="www.paperdogshopping.shop">www.paperdogshopping.shop</a></b>`, // html body
+        html: `<b>Tus credenciales para loguearte en nuestra pagina son: <br>email: ${correo} password:${password} <br> puedes revisar tus facturas en nuestro sitio web : <br><a href="www.paperdogshopping.shop">www.paperdogshopping.shop</a></b>`, // html body
     });
 
 }
